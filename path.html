@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>path css</title>
+
+<style>
+*{margin:0;padding:0;}
+.wrap{background-color:#000;}
+h1{font-size:16px;line-height:30px;color:#fff;}
+section{position:relative;padding:20px;min-height:170px;}
+section ~ section{border-top:1px dotted #ccc;}
+section .box-wrap{display:flex;justify-content:center;}
+section .box{width:100px;height:100px;text-align:center;align-content:center;font-size:16px;font-weight:bold;border-radius:20px;}
+
+/* section1 hover */
+.section1 .box{color:#000;background:#fff;clip-path:circle(75%);transition:clip-path 1s;}
+.section1 .box:hover{clip-path:circle(25%);}
+
+/* section2 animation */
+.section2 .step1,
+.section2 .step2{
+  position: absolute;
+  top: center;
+  left: center;
+}
+.section2 .step1 {background: gray;animation: 6s section2ani infinite alternate;}
+.section2 .step2 {background: beige;animation: 6s section2ani -3s infinite alternate;}
+@keyframes section2ani{
+	0%, 100%{clip-path:inset(0% round 30px);}
+	25%, 75%{clip-path:inset(50% round 50%);}
+}
+
+/* section3 animation */
+.section3 .step1,
+.section3 .step2{
+  position: absolute;
+  top: center;
+  left: center;
+}
+.section3 .step1 {background: gray;animation: 8s section3ani infinite alternate;}
+.section3 .step2 {background: beige;animation: 8s section3ani -4s infinite alternate;}
+@keyframes section3ani{
+  0%, 100% { clip-path: polygon(0 0, 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0); }
+  25%, 75% { clip-path: polygon(0 0, 50% 50%, 0 100%, 50% 50%, 100% 100%, 50% 50%, 100% 0, 50% 50%); }
+}
+
+/* section4 animation */
+.section4 .step1,
+.section4 .step2{
+  position: absolute;
+  top: center;
+  left: center;
+}
+.section4 .step1 {background: gray;animation: 10s section4ani 2 alternate;}
+.section4 .step2 {background: beige;animation: 10s section4ani -5s 2 alternate;}
+@keyframes section4ani{
+  10% {clip-path: circle(100% at 50% 50%);}
+  20% {clip-path: circle(20% at 50% 50%);}
+  30% {clip-path: circle(20% at 20% 70%);}
+  40% {clip-path: circle(20% at 90% 40%);}
+  50%, 100% {clip-path: circle(20% at -20% 20%);}
+}
+
+/* section5 animation */
+/* .section5 .step1,
+.section5 .step2{
+  position: absolute;
+  top: center;
+  left: center;
+  background:transparent;
+  font-size:40px;
+  font-weight:bold;
+}
+.section5 .step1 {animation: 1.5s section5ani_2 linear infinite alternat;}
+.section5 .step2 {animation: 1.5s section5ani_1 linear infinite alternate;}
+@keyframes section5ani_1{
+  0% {color:#fbf7f4;transform: skew(2deg);}
+  100% {color:#d3cfcc;transform: skew(20deg)}
+}
+@keyframes section5ani_2{
+  0% {transform: skew(-2deg);}
+  100% {transform: skew(-20deg);}
+} */
+
+/* section6 animation */
+.section6 .step1,
+.section6 .step2{
+  position: absolute;
+  top: center;
+  left: center;
+}
+.section6 .step1 {offset-path: path("M20,20 C20,100 200,0 200,100");animation: section6ani 3000ms infinite alternate ease-in-out;width:20px;height:20px;background-color:#aaa;}
+.section6 .step2 {offset-path: path("M20,20 C20,100 200,0 200,100");animation: section6ani 2900ms infinite alternate ease-in-out;width:20px;height:20px;background-color:#fff;}
+@keyframes section6ani{
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%;}
+}
+
+/* section7 animation */
+.section7 .step1 {offset-path: circle(10% at 50% 0%);animation: section7ani 5s linear infinite;width:20px;height:20px;background-color:#fff;}
+@keyframes section7ani{
+  100% { offset-distance: 100%;}
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+
+		<section class="section1">
+			<h1>- hover</h1>
+			<div class="box-wrap">
+				<div class="box box1">hover</div>
+			</div>
+		</section>
+
+		<section class="section2">
+			<h1>- ani-circle</h1>
+			<div class="box-wrap">
+				<div class="box step1">STEP1</div>
+				<div class="box step2">STEP2</div>
+			</div>
+		</section>
+
+		<section class="section3">
+			<h1>- ani-polygon</h1>
+			<div class="box-wrap">
+				<div class="box step1">STEP1</div>
+				<div class="box step2">STEP2</div>
+			</div>
+		</section>
+
+		<section class="section4">
+			<h1>- ani-spotlight</h1>
+			<div class="box-wrap">
+				<div class="box step1">STEP1</div>
+				<div class="box step2">STEP2</div>
+			</div>
+		</section>
+
+		<!-- <section class="section5">
+			<h1>- ani-trans</h1>
+			<div class="box-wrap">
+				<div class="box step1">BOX</div>
+				<div class="box step2">BOX</div>
+			</div>
+		</section> -->
+
+		<section class="section6">
+			<h1>- ani-offset-path</h1>
+			<div class="box-wrap">
+				<div class="box step1"></div>
+				<div class="box step2"></div>
+			</div>
+		</section>
+
+		<section class="section7">
+			<h1>- ani-offset-path</h1>
+			<div class="box-wrap">
+				<div class="box step1"></div>
+			</div>
+		</section>
+
+	</div><!-- //wrap -->
+</body>
+</html>
